@@ -1,10 +1,22 @@
 "use client";
 
-import { Bell, User } from "lucide-react";
+import { Bell, User, Menu } from "lucide-react";
 
-export default function Navbar() {
+interface NavbarProps {
+  setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+}
+
+export default function Navbar({ setOpen }: NavbarProps) {
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 fixed top-0 left-64 right-0 z-10">
+    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+      {/* Botón hamburguesa en móvil */}
+      <button
+        className="md:hidden p-2 rounded hover:bg-gray-100"
+        onClick={() => setOpen(prev => !prev)}
+      >
+        <Menu size={24} />
+      </button>
+
       <h1 className="text-lg font-semibold text-gray-800">Panel de Administración</h1>
 
       <div className="flex items-center gap-4">
