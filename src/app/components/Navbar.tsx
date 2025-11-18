@@ -4,9 +4,10 @@ import { Bell, User, Menu } from "lucide-react";
 
 interface NavbarProps {
   setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  open:boolean;
 }
 
-export default function Navbar({ setOpen }: Readonly<NavbarProps>) {
+export default function Navbar({ setOpen, open}: Readonly<NavbarProps>) {
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
       {/* Botón hamburguesa en móvil */}
@@ -17,7 +18,9 @@ export default function Navbar({ setOpen }: Readonly<NavbarProps>) {
         <Menu size={24} />
       </button>
 
-      <h1 className="text-lg font-semibold text-gray-800">Panel de Administración</h1>
+    {!open &&(
+      <h1 className="text-lg font-semibold text-gray-800 text-center">Panel de Administración</h1>
+    )}
 
       <div className="flex items-center gap-4">
         <button className="relative p-2 rounded-full hover:bg-gray-100 transition">

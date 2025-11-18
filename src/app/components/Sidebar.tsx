@@ -20,7 +20,7 @@ export default function Sidebar({ setOpen }: Readonly<Props>) {
     const pathname = usePathname();
 
     return (
-        <aside className="bg-white border-r border-gray-200 w-64 h-screen fixed left-0 top-0 flex flex-col">
+        <aside className="bg-white border-r border-gray-200 w-44 h-screen fixed left-0 top-0 flex flex-col">
             <div className=" flex p-6 border-b border-gray-100 gap-2">
                 <Coffee size={20} color="gray" />
                 <h2 className="text-xl font-bold text-blue-600">Brujillizas Coffee</h2>

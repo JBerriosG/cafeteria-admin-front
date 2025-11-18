@@ -32,9 +32,9 @@ export default function RootLayout({
           <div
             className={`
               fixed top-0 left-0 h-full z-40 transition-transform duration-300
-              w-64 bg-[#1E293B] text-white
+              w-44 bg-[#1E293B] text-white
               ${open ? "translate-x-0" : "-translate-x-full"}
-              md:translate-x-0  /* visible en pantallas medias en adelante */
+              md:translate-x-0
             `}
           >
             <Sidebar setOpen={setOpen}/>
@@ -44,17 +44,17 @@ export default function RootLayout({
           <div
             className={`
               flex flex-col flex-1 transition-all duration-300
-              ${open ? "ml-64" : "ml-0"}
-              md:ml-64 /* deja espacio solo en pantallas grandes */
+              ${open ? "ml-44" : "ml-0"}
+              md:ml-52
             `}
           >
             {/* NAVBAR */}
-            <div className="h-16 bg-white shadow-sm fixed top-0 left-0 md:left-64 right-0 z-30">
-              <Navbar setOpen={setOpen} />
+            <div className="h-16 bg-white shadow-sm fixed top-0 left-0 md:left-52 right-0 z-30">
+              <Navbar setOpen={setOpen} open={open} />
             </div>
 
             {/* MAIN */}
-            <main className="flex w-full overflow-y-auto mt-16 p-6">
+            <main className="flex w-full overflow-y-auto mt-16 p-2">
               {children}
             </main>
           </div>

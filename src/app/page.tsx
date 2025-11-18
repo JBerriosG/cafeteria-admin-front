@@ -22,7 +22,7 @@ export default function DashboardHome(){
   }, []);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 w-full">
       <p className="text-gray-600">
         Bienvenido al sistema de gestión de la cafetería. Aquí puedes administrar el personal, las mesas, los productos y los pedidos.
       </p>
