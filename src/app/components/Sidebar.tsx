@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Users, Coffee, ClipboardList, Table, Croissant, ListX } from "lucide-react";
+import { Home, Users, Coffee, ClipboardList, Table, Croissant, X } from "lucide-react";
 
 const menuItems = [
     { name: "Inicio", icon: Home, href: "/" },
@@ -28,7 +28,7 @@ export default function Sidebar({ setOpen }: Readonly<Props>) {
                     className="md:hidden p-2 rounded hover:bg-gray-100"
                     onClick={() => setOpen(prev => !prev)}
                 >
-                    <ListX size={24} color="black"/>
+                    <X size={24} color="black"/>
                 </button>
             </div>
 
