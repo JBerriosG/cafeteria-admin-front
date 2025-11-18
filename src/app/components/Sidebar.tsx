@@ -28,7 +28,7 @@ export default function Sidebar({ setOpen }: Readonly<Props>) {
                     className="md:hidden p-2 rounded hover:bg-gray-100"
                     onClick={() => setOpen(prev => !prev)}
                 >
-                    <ListX size={24} />
+                    <ListX size={24} color="black"/>
                 </button>
             </div>
 
