@@ -38,7 +38,7 @@ export default function RootLayout({
               md:translate-x-0  /* visible en pantallas medias en adelante */
             `}
           >
-            <Sidebar />
+            <Sidebar setOpen={setOpen}/>
           </div>
 
           {/* ===== CONTENIDO PRINCIPAL ===== */}

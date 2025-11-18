@@ -6,7 +6,7 @@ interface NavbarProps {
   setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
 }
 
-export default function Navbar({ setOpen }: NavbarProps) {
+export default function Navbar({ setOpen }: Readonly<NavbarProps>) {
   return (
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
       {/* Botón hamburguesa en móvil */}

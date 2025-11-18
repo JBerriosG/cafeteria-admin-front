@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Users, Coffee, ClipboardList, Table, Croissant } from "lucide-react";
+import { Home, Users, Coffee, ClipboardList, Table, Croissant, ListX } from "lucide-react";
 
 const menuItems = [
     { name: "Inicio", icon: Home, href: "/" },
@@ -12,7 +12,11 @@ const menuItems = [
     { name: "Pedidos", icon: ClipboardList, href: "/pedidos" },
 ];
 
-export default function Sidebar() {
+interface Props {
+    setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+}
+
+export default function Sidebar({ setOpen }: Readonly<Props>) {
     const pathname = usePathname();
 
     return (
@@ -20,6 +24,12 @@ export default function Sidebar() {
             <div className=" flex p-6 border-b border-gray-100 gap-2">
                 <Coffee size={20} color="gray" />
                 <h2 className="text-xl font-bold text-blue-600">Brujillizas Coffee</h2>
+                <button
+                    className="md:hidden p-2 rounded hover:bg-gray-100"
+                    onClick={() => setOpen(prev => !prev)}
+                >
+                    <ListX size={24} />
+                </button>
             </div>
 
             <nav className="flex-1 overflow-y-auto mt-4">
