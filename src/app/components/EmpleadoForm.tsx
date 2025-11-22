@@ -4,34 +4,30 @@ import { useEffect, useState } from "react";
 import { api } from "../../../lib/api";
 import { useRouter } from "next/navigation";
 
-interface ProductFormProps {
+interface EmpleadoFormProps {
   mode: "create" | "edit";
-  productId?: number;
+  empleadoId?: number;
 }
 
-export default function ProductForm({ mode, productId }: ProductFormProps) {
+export default function EmpleadoForm({ mode, empleadoId }: EmpleadoFormProps) {
   const [form, setForm] = useState({
     nombre: "",
-    precio: "",
-    categoria: "",
-    disponible: true,
+    rol: "",
   });
   const router = useRouter();
 
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    if (mode === "edit" && productId) {
-      api.get(`/producto/${productId}`).then((res) => {
+    if (mode === "edit" && empleadoId) {
+      api.get(`/empleado/${empleadoId}`).then((res) => {
         setForm({
           nombre: res.data.nombre,
-          precio: res.data.precio,
-          categoria: res.data.categoria,
-          disponible: res.data.disponible,
+          rol: res.data.rol
         });
       });
     }
-  }, [mode, productId]);
+  }, [mode, empleadoId]);
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
@@ -47,16 +43,16 @@ export default function ProductForm({ mode, productId }: ProductFormProps) {
     setSuccess("");
 
     if (mode === "create") {
-      await api.post("/producto", form);
-      setSuccess("Producto creado con éxito 🎉");
+      await api.post("/empleado", form);
+      setSuccess("empleado creado con éxito 🎉");
       setTimeout(() => {
-        router.push("/productos");
+        router.push("/empleados");
       }, 1000);
     } else {
-      await api.put(`/producto/${productId}`, form);
-      setSuccess("Producto editado con éxito 🎉");
-       setTimeout(() => {
-        router.push("/productos");
+      await api.put(`/empleado/${empleadoId}`, form);
+      setSuccess("empleado editado con éxito 🎉");
+      setTimeout(() => {
+        router.push("/empleados");
       }, 1500);
     }
   };
@@ -67,7 +63,7 @@ export default function ProductForm({ mode, productId }: ProductFormProps) {
       className="bg-white p-2 rounded-xl shadow-md max-w-xl space-y-4"
     >
       <h1 className="text-2xl font-semibold">
-        {mode === "create" ? "Crear Producto" : "Editar Producto"}
+        {mode === "create" ? "Crear Empleado" : "Editar Empleado"}
       </h1>
 
       <div>
@@ -82,36 +78,20 @@ export default function ProductForm({ mode, productId }: ProductFormProps) {
       </div>
 
       <div>
-        <label className="font-medium">Precio</label>
-        <input
-          name="precio"
-          type="number"
-          value={form.precio}
-          onChange={handleChange}
+        <label className="font-medium">Rol</label>
+        <select
+          name="rol"
+          value={form.rol}              // <- esto asegura que se muestre el valor actual
+          onChange={handleChange}       // <- mismo handler que usabas en el input
           className="w-full border rounded-lg p-2 mt-1"
           required
-        />
-      </div>
+        >
+          <option value="">Seleccione un rol</option>
+          <option value="Socia">Socia</option>
+          <option value="Mesero">Mesero</option>
+          <option value="Cocina">Cocina</option>
+        </select>
 
-      <div>
-        <label className="font-medium">Categoría</label>
-        <input
-          name="categoria"
-          value={form.categoria}
-          onChange={handleChange}
-          className="w-full border rounded-lg p-2 mt-1"
-          required
-        />
-      </div>
-
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          name="disponible"
-          checked={form.disponible}
-          onChange={handleChange}
-        />
-        <label>Disponible</label>
       </div>
       {success && <p className="text-green-600 text-sm">{success}</p>}
 

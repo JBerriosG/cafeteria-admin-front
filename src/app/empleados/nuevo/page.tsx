@@ -1,3 +1,11 @@
+"use client";
+
+import EmpleadoForm from "@/app/components/EmpleadoForm";
+
 export default function NuevoEmpleadoPage() {
-  return <h1>Nuevo empleado</h1>;
+    return (
+      <div className="p-4 w-full">
+        <EmpleadoForm mode="create"/>
+      </div>
+    );
 }

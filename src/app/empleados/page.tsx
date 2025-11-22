@@ -49,9 +49,16 @@ export default function EmpleadosPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">
-        Empleados
-      </h1>
+      <div className="flex flex-col md:flex-row mb-4 justify-between">
+        <h1 className="text-3xl font-bold text-gray-800 mb-1">
+          Empleados
+        </h1>
+        <Link
+          href="/empleados/nuevo"
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-2 py-2 rounded-lg shadow-sm transition duration-200">
+          + Crear Empleado
+        </Link>
+      </div>
 
       {empleados.length === 0 ? (
         <p className="text-gray-500">No hay empleados registrados.</p>
@@ -70,12 +77,19 @@ export default function EmpleadosPage() {
               <div className="mt-4 text-lg text-gray-600 space-y-1">
                 <p><strong>Pedidos Asignados: </strong> {empleado.pedidos?.length ?? "0"}</p>
               </div>
-              <div className="mt-6 text-right">
+              <div className="flex flex-col md:flex-row gap-4 mt-6 justify-between">
                 <Link
                   href={`/empleados/${empleado.id}`}
-                  className="text-blue-600 hover:text-blue-800 font-medium"
                 >
-                  Ver detalles →
+                  <button className="bg-gray-600 hover:bg-gray-800 text-white px-3 py-1 rounded-lg">
+                    Ver detalles
+                  </button>
+                  
+                </Link>
+                <Link href={`/empleados/editar/${empleado.id}`}>
+                  <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg">
+                    Editar
+                  </button>
                 </Link>
               </div>
             </div>

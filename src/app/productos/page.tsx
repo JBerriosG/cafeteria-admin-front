@@ -44,7 +44,7 @@ export default function ProductosPage() {
 
     return (
         <div className="p-8 w-full">
-            <div className="flex mb-4 justify-between">
+            <div className="flex flex-col md:flex-row mb-4 justify-between">
                 <h1 className="text-3xl font-bold text-gray-800 mb-1">
                     Productos
                 </h1>
@@ -73,7 +73,7 @@ export default function ProductosPage() {
                                 {producto.disponible ? "DISPONIBLE" : "NO DISPONIBLE"}
                             </span>
                             <Link href={`/productos/${producto.id}`}>
-                                <button className="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-lg">
+                                <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg">
                                     Editar
                                 </button>
                             </Link>
